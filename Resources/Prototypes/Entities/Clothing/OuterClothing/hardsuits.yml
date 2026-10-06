@@ -719,6 +719,19 @@
     - Hardsuit
     - WhitelistChameleon
 
+#Syndicate Rhodeyo Hardsuit
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseSyndicateContraband, SyndicatePersonalAI]
+  id: ClothingOuterHardsuitSyndieRhodeyo
+  name: syndicate rhodeyo hardsuit
+  description: A heavily mechanized blood-red hardsuit suited with an AI, purpose-built for covering a lot of ground for a syndicate operative squad.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/syndiecommander.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Hardsuits/syndiecommander.rsi
+
+
 #Wizard Hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMagicalContraband ]
