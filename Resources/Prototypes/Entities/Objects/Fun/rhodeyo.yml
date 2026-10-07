@@ -1,0 +1,21 @@
+# Rhodeyo Actions
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionRhodeyoC20R
+  name: C-20r ROW Mount
+  description: Fires the shoulder mounted C20r.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/actions_ai.rsi
+    layers:
+    - state: syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponSubMachineGunC20rROW
+    - item: PinpointerSyndicateNuclear
+#  - type: InstantAction
+#    event: !type:OpenUiActionEvent
+#      key: enum.RadarConsoleUiKey.Key
