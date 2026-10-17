@@ -871,7 +871,24 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
-
+#Springtrap Hardsuit
+- type: entity
+  parent: [PlayerBorgSyndicateAssaultBattery]
+  id: ClothingOuterHardsuitSpringtrap
+  name: springtrap hardsuit
+  description: A bizarre gem-encrusted suit that radiates magical energies.
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: synd_sec_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: synd_sec_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
 
 #Wizard Hardsuit
 - type: entity
