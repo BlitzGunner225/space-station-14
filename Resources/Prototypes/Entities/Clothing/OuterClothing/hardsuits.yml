@@ -721,7 +721,7 @@
 
 #Rhodeyo Juggernaut Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitJuggernaut, StripableInventoryBase]
+  parent: [ClothingOuterHardsuitJuggernaut, StripableInventoryBase, BaseControllable]
   id: ClothingOuterHardsuitRhodeyo
   name: cybersun Rhodeyo suit
   description: A suit made by the cutting edge R&D department at cybersun to be hyper resilient.
@@ -733,6 +733,7 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
+  - type: NukeOperative
   - type: Access
     tags:
     - NuclearOperative
@@ -768,6 +769,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
   - type: Inventory
     templateId: borg
   - type: Hands
@@ -783,6 +785,92 @@
     - ActionViewLaws
   - type: SiliconLawProvider
     laws: Crewsimov
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: Vocal
+    emoteSounds: UnisexSilicon
+    wilhelmProbability: 0
+  - type: DamagedSiliconAccent
+    damageAtMaxCorruption: 300
+  - type: UnblockableSpeech
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBorg
+  - type: Construction
+    graph: Cyborg
+    node: cyborg
+    containers:
+    - part-container
+    - cell_slot
+  - type: Lock
+    locked: true
+    unlockOnClick: false
+  - type: UIRequiresLock
+    userInterfaceKeys:
+    - enum.BorgUiKey.Key
+  - type: LockedWiresPanel
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Silicon
+  - type: HandheldLight
+    toggleOnInteract: true
+    wattage: 0.2
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      300: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: HealthExaminable
+    examinableTypes:
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
+    locPrefix: silicon
+  - type: Destructible
+    generateOverkillThreshold: false
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
 
 
 #Wizard Hardsuit
