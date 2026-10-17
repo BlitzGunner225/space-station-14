@@ -880,7 +880,7 @@
   components:
   - type: Sprite
     layers:
-    - state: service
+    - state: springtrap.png
     - state: synd_sec_e
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -889,6 +889,15 @@
       shader: unshaded
       map: ["light"]
       visible: false
+    - type: BorgChassis
+      maxModules: 3
+      moduleWhitelist:
+        tags:
+        - BorgModuleGeneric
+        - BorgModuleSyndicate
+        - BorgModuleSyndicateAssault
+      hasMindState: synd_sec_e
+      noMindState: springtrap.png
 
 #Wizard Hardsuit
 - type: entity
